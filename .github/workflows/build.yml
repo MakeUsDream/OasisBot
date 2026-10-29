@@ -1,0 +1,54 @@
+name: Build OasisBot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Kaynagi indir (SDUI alt modulu dahil)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: .NET 8 SDK kur
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: MSBuild (Visual Studio) hazirla
+        uses: microsoft/setup-msbuild@v2
+
+      - name: NuGet paketlerini geri yukle
+        run: dotnet restore OasisBot.sln
+
+      - name: Derle (Release / x86)
+        run: msbuild OasisBot.sln /p:Configuration=Release /p:Platform=x86 /m /v:minimal /nologo
+
+      - name: ".NET kurulumu gerektirmeyen surum uret (self-contained)"
+        run: dotnet publish Application\OasisBot\OasisBot.csproj -c Release -r win-x86 --self-contained true -o Build -p:AppendRuntimeIdentifierToOutputPath=false
+
+      - name: Cikti kontrolu
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "Build/OasisBot.exe")) { throw "OasisBot.exe uretilmedi!" }
+          if (-not (Test-Path "Build/coreclr.dll")) { throw "Self-contained .NET runtime yok!" }
+          if (-not (Test-Path "Build/Client.Library.dll")) { throw "Client.Library.dll uretilmedi!" }
+          Get-ChildItem Build | Select-Object Name, Length
+
+      - name: Derlenmis botu paketle (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: OasisBot-Build
+          path: Build/
+          if-no-files-found: error
+          retention-days: 14
