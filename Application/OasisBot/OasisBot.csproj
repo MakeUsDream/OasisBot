@@ -7,13 +7,13 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <OutputPath>.\..\..\Build</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Description>A open source bot for Silkroad Online</Description>
+    <Description>EchidnaBOT - open source Silkroad Online bot</Description>
     <Copyright>Copyright © 2018-2026 RSBot Team; 2026 Silkroad Developer Community</Copyright>
     <PackageProjectUrl>https://github.com/Silkroad-Developer-Community/RSBot</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Silkroad-Developer-Community/RSBot</RepositoryUrl>
-    <AssemblyName>OasisBot</AssemblyName>
-    <Title>OasisBot</Title>
-    <Product>OasisBot</Product>
+    <AssemblyName>EchidnaBOT</AssemblyName>
+    <Title>EchidnaBOT</Title>
+    <Product>EchidnaBOT</Product>
     <Company>Silkroad Developer Community</Company>
     <OutputType>Exe</OutputType>
     <ApplicationIcon>app.ico</ApplicationIcon>

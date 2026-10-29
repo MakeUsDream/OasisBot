@@ -90,7 +90,7 @@ namespace RSBot.Views
             labelName.Name = "labelName";
             labelName.Size = new System.Drawing.Size(61, 25);
             labelName.TabIndex = 4;
-            labelName.Text = "OasisBot";
+            labelName.Text = "EchidnaBOT";
             // 
             // labelDescription
             // 

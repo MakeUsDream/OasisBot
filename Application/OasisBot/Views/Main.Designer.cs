@@ -191,7 +191,7 @@ namespace RSBot.Views
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSave.Color = System.Drawing.Color.FromArgb(56, 155, 90);
+            btnSave.Color = System.Drawing.Color.FromArgb(146, 108, 48);
             btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
             btnSave.ForeColor = System.Drawing.Color.White;
             btnSave.Location = new System.Drawing.Point(978, 15);
@@ -211,8 +211,8 @@ namespace RSBot.Views
             // 
             btnStartStop.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnStartStop.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnStartStop.BackColor = System.Drawing.Color.FromArgb(202, 179, 139);
-            btnStartStop.Color = System.Drawing.Color.FromArgb(202, 179, 139);
+            btnStartStop.BackColor = System.Drawing.Color.FromArgb(201, 164, 76);
+            btnStartStop.Color = System.Drawing.Color.FromArgb(201, 164, 76);
             btnStartStop.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
             btnStartStop.ForeColor = System.Drawing.Color.White;
             btnStartStop.Location = new System.Drawing.Point(1110, 15);
@@ -285,10 +285,10 @@ namespace RSBot.Views
             // notifyIcon
             // 
             notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-            notifyIcon.BalloonTipText = "OasisBot is currently running in the system tray.";
-            notifyIcon.BalloonTipTitle = "OasisBot";
+            notifyIcon.BalloonTipText = "EchidnaBOT is currently running in the system tray.";
+            notifyIcon.BalloonTipTitle = "EchidnaBOT";
             notifyIcon.Icon = (System.Drawing.Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "OasisBot";
+            notifyIcon.Text = "EchidnaBOT";
             notifyIcon.Visible = true;
             notifyIcon.Click += notifyIcon_Click;
             // 

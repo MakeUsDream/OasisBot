@@ -1,4 +1,4 @@
-﻿using RSBot.Core.Components;
+using RSBot.Core.Components;
 using RSBot.Core.Event;
 using RSBot.Core.Objects;
 using RSBot.Core.Objects.Quests;
@@ -204,7 +204,7 @@ internal class CharacterDataEndResponse : IPacketHandler
 
         EventManager.FireEvent("OnLoadCharacter");
 
-        ClientManager.SetTitle($"{character.Name} - OasisBot");
+        ClientManager.SetTitle($"{character.Name} - EchidnaBOT");
 
         if (!Game.Clientless)
             return;

@@ -24,6 +24,16 @@ public partial class Main : UIWindow
     public static readonly Color LightThemeColor = Color.FromArgb(255, 255, 255);
     public static readonly Color DarkThemeColor = Color.FromArgb(16, 16, 16);
 
+    /// <summary>
+    ///     Silkroad temasi - koyu deri/kahve zemin
+    /// </summary>
+    public static readonly Color SilkroadDarkColor = Color.FromArgb(48, 34, 22);
+
+    /// <summary>
+    ///     Silkroad temasi - parsonen (acik) zemin
+    /// </summary>
+    public static readonly Color SilkroadParchmentColor = Color.FromArgb(232, 217, 186);
+
     #region Members
 
     /// <summary>
@@ -56,6 +66,7 @@ public partial class Main : UIWindow
 
         Shown += Main_Shown;
         InitializeCustomButtons();
+        InitializeThemePresets();
     }
 
     #endregion Constructor
@@ -95,9 +106,9 @@ public partial class Main : UIWindow
             return;
 
         if (WindowsHelper.IsDark())
-            SetThemeColor(DarkThemeColor);
+            SetThemeColor(SilkroadDarkColor);
         else
-            SetThemeColor(LightThemeColor);
+            SetThemeColor(SilkroadParchmentColor);
     }
 
     /// <summary>
@@ -117,8 +128,20 @@ public partial class Main : UIWindow
     public void RefreshTheme(bool save = true)
     {
         BackColor = ColorScheme.BackColor;
-        stripStatus.BackColor = BackColor.IsDark() ? ColorScheme.BorderColor : Color.FromArgb(33, 150, 243);
-        stripStatus.ForeColor = ColorScheme.ForeColor;
+
+        if (BackColor.ToArgb() == SilkroadParchmentColor.ToArgb())
+            stripStatus.BackColor = Color.FromArgb(146, 108, 48);
+        else if (BackColor.ToArgb() == SilkroadDarkColor.ToArgb())
+            stripStatus.BackColor = Color.FromArgb(58, 42, 26);
+        else
+            stripStatus.BackColor = BackColor.IsDark()
+                ? ColorScheme.BorderColor
+                : Color.FromArgb(33, 150, 243);
+
+        stripStatus.ForeColor =
+            BackColor.ToArgb() == SilkroadDarkColor.ToArgb()
+                ? Color.FromArgb(226, 199, 138)
+                : ColorScheme.ForeColor;
 
         if (save)
             GlobalConfig.Save();
@@ -541,8 +564,8 @@ public partial class Main : UIWindow
         {
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             AutoSizeMode = AutoSizeMode.GrowAndShrink,
-            BackColor = Color.FromArgb(90, 75, 215),
-            Color = Color.FromArgb(90, 75, 215),
+            BackColor = Color.FromArgb(122, 88, 42),
+            Color = Color.FromArgb(122, 88, 42),
             Font = btnSave.Font,
             ForeColor = Color.White,
             Size = new Size((int)(btnSave.Width * 1.28), btnSave.Height),
@@ -770,6 +793,34 @@ public partial class Main : UIWindow
     }
 
     /// <summary>
+    ///     Theme menusune Silkroad temalarini ekler.
+    /// </summary>
+    private void InitializeThemePresets()
+    {
+        var darkPreset = new ToolStripMenuItem("Silkroad (Koyu)");
+        darkPreset.Click += (_, _) => ApplySilkroadTheme(true);
+
+        var parchmentPreset = new ToolStripMenuItem("Silkroad (Parsonen)");
+        parchmentPreset.Click += (_, _) => ApplySilkroadTheme(false);
+
+        themeToolStripMenuItem.DropDownItems.Insert(0, parchmentPreset);
+        themeToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
+        themeToolStripMenuItem.DropDownItems.Insert(0, darkPreset);
+    }
+
+    /// <summary>
+    ///     Silkroad temasini uygular.
+    /// </summary>
+    /// <param name="dark">Koyu tema <c>true</c>; parsonen tema <c>false</c></param>
+    private void ApplySilkroadTheme(bool dark)
+    {
+        GeneralConfig.Set("RSBot.Theme.Auto", false);
+        GeneralConfig.Save();
+
+        SetThemeColor(dark ? SilkroadDarkColor : SilkroadParchmentColor);
+    }
+
+    /// <summary>
     ///     Handles the Click event of the coloredToolStripMenuItem control.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
@@ -971,7 +1022,7 @@ public partial class Main : UIWindow
         var disconnectedText = LanguageManager.GetLang("Disconnected");
         if (!Text.EndsWith(disconnectedText))
         {
-            Text = $@"OasisBot - {_playerName} - {disconnectedText}";
+            Text = $@"{Program.AssemblyTitle} - {_playerName} - {disconnectedText}";
             notifyIcon.Text = Text;
         }
     }
@@ -1028,7 +1079,7 @@ public partial class Main : UIWindow
             item.Enabled = true;
 
         _playerName = Game.Player.Name;
-        Text = $@"OasisBot - {_playerName}";
+        Text = $@"{Program.AssemblyTitle} - {_playerName}";
         notifyIcon.Text = Text;
 
         if (Game.Clientless)

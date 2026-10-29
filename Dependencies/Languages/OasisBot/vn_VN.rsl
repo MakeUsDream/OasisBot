@@ -23,7 +23,7 @@ RSBot.ScriptRecorder.Panel.btnStart="Bắt Đầu"
 RSBot.ExitDialog.Panel.btnNo="Không"
 RSBot.ExitDialog.Panel.btnYes="Có"
 RSBot.ExitDialog.Panel.checkDontAskAgain="Đừng hỏi lại"
-RSBot.ExitDialog.labelInfo="Bạn có chắc chắn muốn thoát OasisBot không?
+RSBot.ExitDialog.labelInfo="Bạn có chắc chắn muốn thoát EchidnaBOT không?
 Thao tác này sẽ ngắt kết nối bạn khỏi
 Máy chủ Con Đường Tơ Lụa!"
 LabelPlayerName="Không trong trò chơi"
@@ -47,7 +47,7 @@ RunNow="Chạy ngay"
 StopRunning="Ngừng chạy"
 OpenFileDialogTitle="Vui lòng chọn tệp thực thi Con Đường Tơ Lụa của bạn để tiếp tục..."
 ClientTypeInputDialogTitle="Chọn loại client!"
-ClientTypeInputDialogContent="Vui lòng chọn loại client để OasisBot hoạt động bình thường!"
+ClientTypeInputDialogContent="Vui lòng chọn loại client để EchidnaBOT hoạt động bình thường!"
 SelectSroDirWarn="Vui lòng chọn một thư mục Con Đường Tơ Lụa thích hợp!"
 ClientTypeNotSelected="Bây giờ nó được đặt thành 'Vietnam' vì bạn chưa chọn bất kỳ loại client nào."
 ConfigureTrainingAreaBeforeStartBot="Please configure the training area before start the bot!"

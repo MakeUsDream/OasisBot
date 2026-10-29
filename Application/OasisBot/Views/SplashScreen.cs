@@ -23,8 +23,8 @@ public partial class SplashScreen : UIWindow
     {
         InitializeComponent();
 
-        ColorScheme.BackColor = Main.DarkThemeColor;
-        BackColor = Main.DarkThemeColor;
+        ColorScheme.BackColor = Main.SilkroadDarkColor;
+        BackColor = Main.SilkroadDarkColor;
         CheckForIllegalCrossThreadCalls = false;
 
         _mainForm = mainForm;
@@ -125,13 +125,15 @@ public partial class SplashScreen : UIWindow
         if (detectDarkLight)
         {
             if (WindowsHelper.IsDark())
-                ColorScheme.BackColor = Main.DarkThemeColor;
+                ColorScheme.BackColor = Main.SilkroadDarkColor;
             else
-                ColorScheme.BackColor = Main.LightThemeColor;
+                ColorScheme.BackColor = Main.SilkroadParchmentColor;
         }
         else
         {
-            ColorScheme.BackColor = Color.FromArgb(GlobalConfig.Get("SDUI.Color", Color.White.ToArgb()));
+            ColorScheme.BackColor = Color.FromArgb(
+                GlobalConfig.Get("SDUI.Color", Main.SilkroadDarkColor.ToArgb())
+            );
         }
 
         _mainForm.RefreshTheme();

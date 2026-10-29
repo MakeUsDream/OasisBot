@@ -162,10 +162,10 @@ namespace RSBot.General.Views
             // notifyIcon
             // 
             notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            notifyIcon.BalloonTipText = "OasisBot";
-            notifyIcon.BalloonTipTitle = "OasisBot";
+            notifyIcon.BalloonTipText = "EchidnaBOT";
+            notifyIcon.BalloonTipTitle = "EchidnaBOT";
             notifyIcon.Icon = (System.Drawing.Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "OasisBot";
+            notifyIcon.Text = "EchidnaBOT";
             // 
             // PendingWindow
             // 

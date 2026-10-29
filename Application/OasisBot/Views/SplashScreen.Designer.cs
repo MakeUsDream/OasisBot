@@ -52,6 +52,7 @@ namespace RSBot.Views
             pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox.TabIndex = 0;
             pictureBox.TabStop = false;
+            pictureBox.Visible = false;
             // 
             // referenceDataLoader
             // 
@@ -64,7 +65,7 @@ namespace RSBot.Views
             logoLabel.ApplyGradient = true;
             logoLabel.BackColor = System.Drawing.Color.Transparent;
             logoLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            logoLabel.Font = new System.Drawing.Font("Segoe UI Black", 65.25F, System.Drawing.FontStyle.Bold);
+            logoLabel.Font = new System.Drawing.Font("Segoe UI Black", 49.25F, System.Drawing.FontStyle.Bold);
             logoLabel.ForeColor = System.Drawing.Color.FromArgb(0, 0, 0);
             logoLabel.Gradient = new System.Drawing.Color[]
     {
@@ -76,7 +77,7 @@ namespace RSBot.Views
             logoLabel.Name = "logoLabel";
             logoLabel.Size = new System.Drawing.Size(640, 100);
             logoLabel.TabIndex = 3;
-            logoLabel.Text = "OASISBOT";
+            logoLabel.Text = "ECHIDNABOT";
             logoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelVersion
