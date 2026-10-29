@@ -1,4 +1,4 @@
-name: Build OasisBot
+name: Build EchidnaBOT
 
 on:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
       - name: Cikti kontrolu
         shell: pwsh
         run: |
-          if (-not (Test-Path "Build/OasisBot.exe")) { throw "OasisBot.exe uretilmedi!" }
+          if (-not (Test-Path "Build/EchidnaBOT.exe")) { throw "EchidnaBOT.exe uretilmedi!" }
           if (-not (Test-Path "Build/coreclr.dll")) { throw "Self-contained .NET runtime yok!" }
           if (-not (Test-Path "Build/Client.Library.dll")) { throw "Client.Library.dll uretilmedi!" }
           Get-ChildItem Build | Select-Object Name, Length
@@ -48,7 +48,7 @@ jobs:
       - name: Derlenmis botu paketle (artifact)
         uses: actions/upload-artifact@v4
         with:
-          name: OasisBot-Build
+          name: EchidnaBOT-Build
           path: Build/
           if-no-files-found: error
           retention-days: 14
